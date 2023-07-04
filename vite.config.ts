@@ -4,9 +4,10 @@ import vue from '@vitejs/plugin-vue';
 
 const serverOptions: ServerOptions = {
   host: true,
+  port: 9999,
   proxy: {
-    '/gateway': {
-      target: 'http://127.0.0.1:3000',
+    '/api': {
+      target: 'http://127.0.0.1:9999',
       changeOrigin: true,
       rewrite: (path) => path.replace(/^\/gateway/, ''),
       configure: (proxy, options) => {

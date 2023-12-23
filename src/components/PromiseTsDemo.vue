@@ -25,7 +25,7 @@ const response = ref('');
 const getTest = async (username: string) => {
   return new Promise<IResponseBody<ITest>>((resolve, reject) => {
     request<ITest>({
-      url: '/api/index/test',
+      url: '/index/test',
       method: 'GET',
       data: {
         username
@@ -55,7 +55,7 @@ const authorityList = ref<IAuthority[]>([]);
 const getAuthority = async () => {
   return new Promise<IResponseBody<IAuthority[]>>((resolve, reject) => {
     request<IAuthority[]>({
-      url: '/api/index/authority',
+      url: '/index/authority',
       method: 'GET',
       data: {
         username

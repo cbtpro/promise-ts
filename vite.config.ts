@@ -9,7 +9,7 @@ const serverOptions: ServerOptions = {
     '/api': {
       target: 'http://127.0.0.1:9999',
       changeOrigin: true,
-      rewrite: (path) => path.replace(/^\/gateway/, ''),
+      rewrite: (path) => path.replace(/^\/api/, ''),
       configure: (proxy, options) => {
         // proxy 是 'http-proxy' 的实例
       }

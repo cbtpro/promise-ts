@@ -2,6 +2,16 @@ import { createApp } from 'vue';
 import '@/style.css';
 import App from '@/App.vue';
 
-import '@/mock'
+import { initialMock } from '@/mock'
 
-createApp(App).mount('#app');
+const main = async () => {
+  try {
+    await initialMock();
+  } catch (error) {
+    console.error(error)
+  } finally {
+    createApp(App).mount('#app');
+  }
+}
+
+main();

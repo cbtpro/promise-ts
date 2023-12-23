@@ -15,13 +15,27 @@
 import Mockjs from 'mock2js';
 import { isDev } from '@/config';
 
-if (isDev) {
-  import('./api/index/authority');
-  import('./api/index/test');
+export const initialMock = () => {
+  return new Promise((resolve, reject) => {
+    if (!isDev) {
+      reject('未启用mock');
+      return;
+    }
+    const mockPromises = [
+      import('./api/index/authority'),
+      import('./api/index/test')
+    ];
+    Promise.allSettled(mockPromises).then((results) => {
+      console.log(results);
 
-  Mockjs.setup({
-    timeout: 800
+      Mockjs.setup({
+        timeout: 800
+      });
+  
+      console.log('mock initial complete!');
+      resolve('success');
+    });
   });
+};
 
-  console.log('mock initial complete!');
-}
+export default initialMock;
